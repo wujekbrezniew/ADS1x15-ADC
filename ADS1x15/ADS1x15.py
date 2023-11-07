@@ -301,6 +301,9 @@ class ADS1x15:
         "Transform an ADC value to nominal voltage"
         volts = self.getMaxVoltage() * value
         return volts / ((2 ** (self._adcBits - 1)) - 1)
+    
+    def closeBus(self):
+        self.i2c.close()
 
 class ADS1013(ADS1x15) :
     "ADS1013 class derifed from general ADS1x15 class"
